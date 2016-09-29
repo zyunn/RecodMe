@@ -4,6 +4,7 @@
     <modules>
       <module fileurl="file://$PROJECT_DIR$/RecodMe.iml" filepath="$PROJECT_DIR$/RecodMe.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/hebelibrary/hebelibrary.iml" filepath="$PROJECT_DIR$/hebelibrary/hebelibrary.iml" />
     </modules>
   </component>
 </project>

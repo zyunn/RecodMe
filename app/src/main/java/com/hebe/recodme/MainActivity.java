@@ -1,6 +1,8 @@
 package com.hebe.recodme;
 
+import android.database.sqlite.SQLiteDatabase;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -9,7 +11,13 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.hebe.recodme.db.DataBaseHealper;
+import com.hebe.recodme.db.ProjectType;
+import com.hebe.recodme.db.TableHelper;
+
 public class MainActivity extends AppCompatActivity {
+
+    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,6 +34,11 @@ public class MainActivity extends AppCompatActivity {
                         .setAction("Action", null).show();
             }
         });
+        db=new DataBaseHealper(getBaseContext()).getWritableDatabase();
+        db.beginTransaction();
+        TableHelper.createTabble(db, ProjectType.class);
+
+
     }
 
     @Override

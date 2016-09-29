@@ -13,9 +13,9 @@ import java.lang.annotation.Target;
 @Target(ElementType.FIELD)
 public @interface Column {
     /**column name**/
-    public abstract  String  getName() default "";
+    public abstract  String  name() default "";
     /**column 类型**/
-    public abstract  String  getType()  default  "";
+    public abstract  String  type()  default  "";
     /**是否有分格符**/
     public abstract boolean splitStr() default true;
     /**column 长度**/
