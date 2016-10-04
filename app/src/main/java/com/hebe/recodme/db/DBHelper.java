@@ -27,12 +27,13 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
 
     /**
      * 单列模式
+     *
      * @param context 上下文环境
      * @return 唯一单列
      */
     public static DBHelper getInstance(Context context) {
         if (instance == null) {
-            synchronized (DBHelper.class){// 比较好的单列模式
+            synchronized (DBHelper.class) {// 比较好的单列模式
                 instance = new DBHelper(context);
             }
         }
@@ -49,7 +50,7 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onCreate(SQLiteDatabase database, ConnectionSource connectionSource) {
         try {
-            TableUtils.createTable(connectionSource,ProjectType.class);
+            TableUtils.createTable(connectionSource, ProjectType.class);
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -59,18 +60,37 @@ public class DBHelper extends OrmLiteSqliteOpenHelper {
     @Override
     public void onUpgrade(SQLiteDatabase database, ConnectionSource connectionSource, int oldVersion, int newVersion) {
         try {
-            TableUtils.dropTable(connectionSource,ProjectType.class,true);
-            onCreate(database,connectionSource);
+            TableUtils.dropTable(connectionSource, ProjectType.class, true);
+            onCreate(database, connectionSource);
         } catch (SQLException e) {
             e.printStackTrace();
         }
     }
 
-
-    public synchronized Dao getDao(Class clazz) throws SQLException{
-          Dao dao=null;
-
-
+    /**
+     * 通过类来获得指定的Dao
+     */
+    public synchronized Dao getDao(Class clazz) throws SQLException {
+        Dao dao = null;
+        String simpleName = clazz.getSimpleName();
+        if (!daos.containsKey(simpleName)) {
+            dao = super.getDao(clazz);
+            daos.put(simpleName, dao);
+        } else {
+            dao = daos.get(simpleName);
+        }
         return dao;
+    }
+
+    /***
+     * 释放资源
+     */
+    @Override
+    public void close() {
+        super.close();
+        for (String key : daos.keySet()) {
+            Dao dao = daos.get(key);
+            dao = null;
+        }
     }
 }

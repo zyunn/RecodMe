@@ -1,8 +1,8 @@
 package com.hebe.recodme;
 
-import android.database.sqlite.SQLiteDatabase;
+
+import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
@@ -11,13 +11,8 @@ import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
 
-import com.hebe.recodme.db.DataBaseHealper;
-import com.hebe.recodme.db.ProjectType;
-import com.hebe.recodme.db.TableHelper;
-
 public class MainActivity extends AppCompatActivity {
 
-    SQLiteDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,12 +27,10 @@ public class MainActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Snackbar.make(view, "Replace with your own action", Snackbar.LENGTH_LONG)
                         .setAction("Action", null).show();
+                startActivity(new Intent(getBaseContext(),AddOneActivity.class));
+
             }
         });
-        db=new DataBaseHealper(getBaseContext()).getWritableDatabase();
-        db.beginTransaction();
-        TableHelper.createTabble(db, ProjectType.class);
-
 
     }
 

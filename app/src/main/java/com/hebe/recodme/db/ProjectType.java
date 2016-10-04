@@ -1,23 +1,36 @@
 package com.hebe.recodme.db;
 
-import com.hebe.recodme.db.annotation.Column;
-import com.hebe.recodme.db.annotation.Table;
+import com.j256.ormlite.field.DatabaseField;
+import com.j256.ormlite.table.DatabaseTable;
+
+import java.io.Serializable;
 
 /**
  * 项目的数据表
  * Created by HebeChung on 2016/9/29.
  */
-@Table(name = "ProjectType")
-public class ProjectType {
-    @Column
-    Integer ID;
+@DatabaseTable
+public class ProjectType implements Serializable {
+    @DatabaseField(generatedId = true)
+    public int ID;
 
-    @Column(length = 5)
-    String name;
+    /**
+     * 编码
+     */
+    @DatabaseField
+    public String code;
 
+    /**
+     * 名称
+     */
+    @DatabaseField
+    public String name;
 
-
-
+    /**
+     * 图标
+     */
+    @DatabaseField
+    public int iconResId;
 
 
 } 
