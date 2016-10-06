@@ -93,5 +93,13 @@ public class ProjectTypeDao {
 
     }
 
+    public void update(ProjectType projectType){
+        try {
+            projectTypeDao.update(projectType);
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+    }
+
 
 }

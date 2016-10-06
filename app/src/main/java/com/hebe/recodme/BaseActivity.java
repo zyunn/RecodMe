@@ -33,6 +33,7 @@ public abstract class BaseActivity extends AppCompatActivity {
         }
         Button btnLeft = (Button) findViewById(resID);
         if (btnLeft != null) {
+            btnLeft.setVisibility(View.VISIBLE);
             btnLeft.setText(str);
             if (onClickListener != null) {
                 btnLeft.setOnClickListener(onClickListener);

@@ -22,7 +22,14 @@ public class ProjectTypeAdapter extends ArrayAdapter<ProjectType> {
 
     public ProjectTypeAdapter(Context context) {
         super(context, 0);
-        projectTypeDao=new ProjectTypeDao(getContext());
+        projectTypeDao = new ProjectTypeDao(getContext());
+        generateDate();
+    }
+
+    /***
+     * 生成数据
+     */
+    private void generateDate() {
         types = (ArrayList<ProjectType>) projectTypeDao.queryForAll();
         // 在末尾添加加号功能
         addNewIcon();
@@ -31,12 +38,21 @@ public class ProjectTypeAdapter extends ArrayAdapter<ProjectType> {
     }
 
     /**
+     * 刷新页面
+     */
+    public void refresh() {
+        clear();
+        generateDate();
+    }
+
+    /**
      * 在末尾添加加号功能
      */
     private void addNewIcon() {
-        ProjectType newIcon=new ProjectType();
-        newIcon.name="添加";
-        newIcon.iconResId=R.mipmap.pin2;
+        ProjectType newIcon = new ProjectType();
+        newIcon.name = "添加";
+        newIcon.iconResId = R.mipmap.pin2;
+        types.add(newIcon);
     }
 
     private ArrayList<ProjectType> types;

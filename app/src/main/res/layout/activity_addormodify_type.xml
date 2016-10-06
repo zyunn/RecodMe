@@ -41,9 +41,11 @@
         />
 
     <GridView
+        android:padding="3dp"
         android:id="@+id/grid_icons"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
+        android:gravity="center_horizontal"
         android:numColumns="5">
 
     </GridView>

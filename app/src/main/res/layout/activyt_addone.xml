@@ -3,6 +3,7 @@
               android:orientation="vertical"
               android:layout_width="match_parent"
               android:layout_height="match_parent">
+    <include layout="@layout/item_head"/>
     <TextView
         android:id="@+id/txt_new"
         android:layout_width="match_parent"
@@ -11,14 +12,116 @@
         android:gravity="center"
         android:textColor="#555"
         android:textSize="20dp"
+        android:visibility="gone"
         android:hint="记录你一天的生活"/>
+
 
     <GridView
         android:id="@+id/grid_types"
+        android:padding="5dp"
+        android:layout_gravity="center_horizontal"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:numColumns="5">
+        android:layout_height="200dp"
 
+        android:numColumns="5">
     </GridView>
+    <include layout="@layout/item_line" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="开始时间:"
+            android:padding="5dp"
+            android:gravity="center_vertical"
+            android:drawableLeft="@mipmap/clock"
+            android:textSize="16sp"
+            android:drawablePadding="5dp"
+            android:textColor="#222"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="17:01"
+            android:padding="5dp"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:drawablePadding="5dp"
+            android:textColor="#222"/>
+    </LinearLayout>
+
+    <include layout="@layout/item_line" />
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:layout_marginBottom="10dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="结束时间:"
+            android:padding="5dp"
+            android:gravity="center_vertical"
+            android:drawableLeft="@mipmap/clock"
+            android:textSize="16sp"
+            android:drawablePadding="5dp"
+            android:textColor="#222"/>
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="17:01"
+            android:padding="5dp"
+            android:gravity="center_vertical"
+            android:textSize="16sp"
+            android:drawablePadding="5dp"
+            android:textColor="#222"/>
+    </LinearLayout>
+
+    <include layout="@layout/item_line" />
+
+
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:padding="2dp"
+       >
+
+        <ImageView
+            android:layout_width="35dp"
+            android:layout_height="35dp"
+            android:padding="3dp"
+            android:src="@mipmap/clipboard"/>
+
+        <EditText
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="top|left"
+            android:layout_marginTop="7dp"
+            android:layout_marginLeft="37dp"
+            android:background="@null"
+            android:textSize="16sp"
+            android:hint="写备注:"
+            />
+
+    </FrameLayout>
+
+
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="添加"
+        android:background="#2f4da7"
+        android:textColor="#FFF"
+        />
+
+
 
 </LinearLayout>
